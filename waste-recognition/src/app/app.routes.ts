@@ -2,12 +2,34 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    path: 'onboarding',
+    loadComponent: () =>
+      import('./onboarding/onboarding.component').then(
+        (m) => m.OnboardingComponent
+      ),
+  },
+  {
+    path: 'scan',
+    loadComponent: () =>
+      import('./scan/component/scan.component').then((m) => m.ScanComponent),
+  },
+  {
+    path: 'success',
+    loadComponent: () =>
+      import('./layers/success-layer.component').then(
+        (m) => m.SuccessLayerComponent
+      ),
+  },
+  {
+    path: 'error',
+    loadComponent: () =>
+      import('./layers/error-layer/error-layer.component').then(
+        (m) => m.ErrorLayerComponent
+      ),
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'scan',
     pathMatch: 'full',
   },
 ];

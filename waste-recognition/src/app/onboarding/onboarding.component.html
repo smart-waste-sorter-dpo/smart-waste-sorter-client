@@ -1,0 +1,14 @@
+<ion-content>
+  <div class="onboarding-container">
+    <svg></svg>
+    <div class="onboarding-card">
+      <h2>{{ slides[currentSlideIndex].title }}</h2>
+      <p>{{ slides[currentSlideIndex].description }}</p>
+      @if(currentSlideIndex < slides.length - 1) {
+      <ion-button (click)="nextSlide()">Далее</ion-button>
+      } @else {
+      <ion-button (click)="goToScanPage()">Перейти</ion-button>
+      }
+    </div>
+  </div>
+</ion-content>
