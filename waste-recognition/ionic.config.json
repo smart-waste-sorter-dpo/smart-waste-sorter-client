@@ -1,0 +1,7 @@
+{
+  "name": "waste-recognition",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
