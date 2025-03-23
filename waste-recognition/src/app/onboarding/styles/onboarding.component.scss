@@ -2,8 +2,15 @@ ion-content {
   --padding-top: 20px;
 }
 
-.onboarding-container {
-  display: flex;
+.onboarding {
+  &__container {
+    display: flex;
+  }
+  &__icon {
+    height: 200px;
+    margin: auto;
+    margin-top: 150px;
+  }
 }
 
 .onboarding-card {
@@ -33,10 +40,36 @@ ion-content {
     font-weight: 800;
   }
 
-  ion-button {
-    margin-bottom: 40px;
-    width: 165px;
+  &__desc {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__footer {
     margin-top: auto;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0;
+
+    & span {
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background-color: gray;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+
+    .active {
+      background-color: #07674b;
+    }
+  }
+
+  ion-button {
+    width: 165px;
   }
 }
 

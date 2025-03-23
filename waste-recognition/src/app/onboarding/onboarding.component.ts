@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { IonButton, IonContent } from '@ionic/angular/standalone';
 
@@ -9,26 +9,27 @@ import { IonButton, IonContent } from '@ionic/angular/standalone';
   styleUrl: './styles/onboarding.component.scss',
 })
 export class OnboardingComponent {
-  currentSlideIndex = 0;
+  currentSlideIndex: WritableSignal<number> = signal(0);
   private _navCtrl: NavController = inject(NavController);
 
   slides = [
     {
-      icon: 'trash-outline',
+      icon: 'assets/recycle.png',
       title: 'Сканирование мусора',
       description:
-        'Учитесь быстро сканировать мусор для правильной утилизации.',
+        'Учитесь быстро сканировать мусор для правильной утилизации. Приложение помогает определить тип отходов.',
     },
     {
-      icon: 'recycle-outline',
+      icon: 'assets/trash.png',
       title: 'Правильная сортировка',
       description:
-        'Разделяйте материалы для переработки для снижения нагрузки на природу.',
+        'Разделяйте материалы для переработки, чтобы снизить нагрузку на природу. Приложение распознаёт бумагу, пластик, стекло и другие виды отходов, помогая сортировать их правильно.',
     },
     {
-      icon: 'document-text-outline',
+      icon: 'assets/camera.png',
       title: 'Перейти к сканированию',
-      description: 'Готовы начать? Перейдите на страницу сканирования.',
+      description:
+        'Готовы начать? Просто наведите камеру на предмет, и приложение подскажет, как его переработать. Внесите вклад в экологию уже сейчас!',
     },
   ];
 
@@ -37,8 +38,8 @@ export class OnboardingComponent {
   }
 
   nextSlide() {
-    if (this.currentSlideIndex < this.slides.length - 1) {
-      this.currentSlideIndex++;
+    if (this.currentSlideIndex() < this.slides.length - 1) {
+      this.currentSlideIndex.set(this.currentSlideIndex() + 1);
     }
   }
 
@@ -47,6 +48,6 @@ export class OnboardingComponent {
   }
 
   goToSlide(index: number) {
-    this.currentSlideIndex = index;
+    this.currentSlideIndex.set(index);
   }
 }

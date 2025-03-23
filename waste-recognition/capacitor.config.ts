@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'waste-recognition',
+  appName: 'Чистый путь',
   webDir: 'www',
   plugins: {
     SplashScreen: {
@@ -10,6 +10,8 @@ const config: CapacitorConfig = {
       launchAutoHide: true,
       backgroundColor: '#07674B',
       androidScaleType: 'CENTER_CROP',
+      splashFullScreen: true,
+      splashImmersive: true,
     },
   },
 };
