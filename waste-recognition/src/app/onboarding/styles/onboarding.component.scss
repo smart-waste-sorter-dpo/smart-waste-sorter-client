@@ -6,9 +6,15 @@ ion-content {
   &__container {
     display: flex;
   }
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+
   &__icon {
     height: 200px;
-    margin: auto;
     margin-top: 150px;
   }
 }
@@ -34,7 +40,7 @@ ion-content {
   }
 
   h2 {
-    margin: 48px 0 24px;
+    margin: 32px 0 24px;
     color: #07674b;
     font-size: 20px;
     font-weight: 800;
@@ -80,4 +86,52 @@ ion-content {
   transform: translateX(-50%);
   display: flex;
   gap: 10px;
+}
+
+@media (max-height: 780px) {
+  .onboarding__icon {
+    margin-top: 60px;
+  }
+
+  .onboarding-card {
+    padding: 28px;
+
+    h2 {
+      margin: 24px 0 24px;
+    }
+  }
+}
+
+@media (max-height: 685px) {
+  .onboarding__icon {
+    height: 150px;
+    margin-top: 60px;
+  }
+
+  .onboarding-card {
+    padding: 28px;
+    max-height: 420px;
+    min-height: 360px;
+
+    h2 {
+      margin: 24px 0 24px;
+    }
+  }
+}
+
+@media (max-height: 600px) {
+  .onboarding__icon {
+    height: 150px;
+    margin-top: 48px;
+  }
+
+  .onboarding-card {
+    padding: 28px;
+    max-height: 400px;
+    min-height: 330px;
+
+    h2 {
+      margin: 24px 0 24px;
+    }
+  }
 }

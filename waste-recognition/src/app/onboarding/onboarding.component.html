@@ -1,6 +1,8 @@
 <ion-content>
   <div class="onboarding__container">
-    <img class="onboarding__icon" [src]="slides[currentSlideIndex()].icon" />
+    <div class="onboarding__icon-container">
+      <img class="onboarding__icon" [src]="slides[currentSlideIndex()].icon" />
+    </div>
     <div class="onboarding-card">
       <h2>{{ slides[currentSlideIndex()].title }}</h2>
       <p class="onboarding-card__desc">

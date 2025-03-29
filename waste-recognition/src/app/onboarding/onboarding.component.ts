@@ -1,6 +1,7 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { IonButton, IonContent } from '@ionic/angular/standalone';
+import { OnboardingService } from './services/onboarding.service';
 
 @Component({
   selector: 'app-onboarding',
@@ -11,6 +12,7 @@ import { IonButton, IonContent } from '@ionic/angular/standalone';
 export class OnboardingComponent {
   currentSlideIndex: WritableSignal<number> = signal(0);
   private _navCtrl: NavController = inject(NavController);
+  private _onboardingService: OnboardingService = inject(OnboardingService);
 
   slides = [
     {
@@ -44,6 +46,7 @@ export class OnboardingComponent {
   }
 
   goToScanPage() {
+    this._onboardingService.completeOnboarding();
     this._navCtrl.navigateForward('/scan');
   }
 

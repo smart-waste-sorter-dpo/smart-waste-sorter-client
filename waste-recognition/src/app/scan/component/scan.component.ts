@@ -8,6 +8,7 @@ import {
   NavController,
 } from '@ionic/angular/standalone';
 import { catchError, EMPTY, from, of, switchMap } from 'rxjs';
+import { Classify } from '../interfaces/classify.interface';
 
 @Component({
   selector: 'app-onboarding',
@@ -35,13 +36,19 @@ export class ScanComponent {
           this._imageUrl = photo.webPath;
           return this.uploadImage(photo);
         }),
-        catchError(() => {
+        catchError((err) => {
+          console.log(err);
           this._router.navigate(['/error']);
           return EMPTY;
         })
       )
-      .subscribe(() => {
-        this._router.navigate(['/success']);
+      .subscribe((response: any) => {
+        console.log(response);
+        this._router.navigate(['/success'], {
+          queryParams: {
+            class: response.class,
+          },
+        });
       });
   }
 
@@ -50,10 +57,7 @@ export class ScanComponent {
     return from(fetch(photo.webPath!).then((r) => r.blob())).pipe(
       switchMap((imageBlob: Blob) => {
         formData.append('file', imageBlob, 'scan-image.jpg');
-        return this._httpClient.post(
-          'http://localhost:8000/api/v1/wastes/classify/',
-          formData
-        );
+        return this._httpClient.post('/api/v1/wastes/classify/', formData);
       }),
       catchError(() => {
         this._router.navigate(['/error']);

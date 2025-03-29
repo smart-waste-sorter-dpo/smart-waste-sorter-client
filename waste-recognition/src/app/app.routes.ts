@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { OnboardingService } from './onboarding/services/onboarding.service';
+import { inject } from '@angular/core';
 
 export const routes: Routes = [
   {
@@ -29,7 +31,9 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'scan',
     pathMatch: 'full',
+    redirectTo: !!localStorage.getItem('onboardingCompleted')
+      ? 'scan'
+      : 'onboarding',
   },
 ];
